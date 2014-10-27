@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DD74FF87-684D-4060-9E79-D3E170980A45</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CookieCrunch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7D5D7797506828FE0C4D675014ABB9E1E254500B</key>
+		<string>github.com:katfang/move-furniture-swiftly.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CookieCrunch/CookieCrunch.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7D5D7797506828FE0C4D675014ABB9E1E254500B</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:katfang/move-furniture-swiftly.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7D5D7797506828FE0C4D675014ABB9E1E254500B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7D5D7797506828FE0C4D675014ABB9E1E254500B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MoveFurnitureSwiftly</string>
+		</dict>
+	</array>
+</dict>
+</plist>

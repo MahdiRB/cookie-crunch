@@ -27,6 +27,8 @@ class GameScene: SKScene {
     
     var swipeHandler: ((Swap) -> ())?
     var moveHandler: ((Swap) -> ())?
+    
+    private var selectionSprite = SKSpriteNode()
 
     
     required init?(coder aDecoder: NSCoder) {
@@ -86,7 +88,6 @@ class GameScene: SKScene {
             if let cookie = level.cookieAtColumn(column, row: row) {
                 moveFromColumn = column
                 moveFromRow = row
-                cookie.sprite?.position = location
                 cookie.sprite?.zPosition = 100
             }
         }
@@ -111,7 +112,13 @@ class GameScene: SKScene {
 
         if success {
             if let cookie = level.cookieAtColumn(moveFromColumn!, row: moveFromRow!) {
-                cookie.sprite!.position = location
+                if column != cookie.column || row != cookie.row {
+                    println("Moved outside")
+                    cookie.dragging = true
+                }
+                if cookie.dragging {
+                    cookie.sprite!.position = location
+                }
             }
         }
     }
@@ -141,6 +148,7 @@ class GameScene: SKScene {
         if success {
             trySwapToColumn(column, row: row)
         } else if let cookie = level.cookieAtColumn(moveFromColumn!, row: moveFromRow!) {
+            cookie.dragging = false
             animateCookieHome(cookie)
         }
     }
@@ -200,10 +208,35 @@ class GameScene: SKScene {
             let (success, column, row) = convertPoint(touchLocation)
             if success {
                 if let cookie = level.cookieAtColumn(column, row: row) {
-                    let alert = UIAlertView(title: "Clicked a cookie", message: "You clicked a \(cookie.cookieType) at \(cookie.column), \(cookie.row)", delegate: nil, cancelButtonTitle: "OK")
-                    alert.show()
+                    if cookie.selected {
+                        hideSelectionIndicator()
+                    } else {
+                        showSelectionIndicatorForCookie(cookie)
+                    }
+                    cookie.selected = !cookie.selected
                 }
             }
         }
+    }
+    
+    func showSelectionIndicatorForCookie(cookie: Cookie) {
+        if selectionSprite.parent != nil {
+            selectionSprite.removeFromParent()
+        }
+        
+        if let sprite = cookie.sprite {
+            let texture = SKTexture(imageNamed: cookie.cookieType.highlightedSpriteName)
+            selectionSprite.size = texture.size()
+            selectionSprite.runAction(SKAction.setTexture(texture))
+            
+            sprite.addChild(selectionSprite)
+            selectionSprite.alpha = 1.0
+        }
+    }
+    
+    func hideSelectionIndicator() {
+        selectionSprite.runAction(SKAction.sequence([
+            SKAction.fadeOutWithDuration(0.3),
+            SKAction.removeFromParent()]))
     }
 }

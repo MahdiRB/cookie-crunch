@@ -39,6 +39,8 @@ enum CookieType: Int, Printable {
 class Cookie: Printable {
     var column: Int
     var row: Int
+    var selected: Bool
+    var dragging: Bool
     let cookieType: CookieType
     var sprite: SKSpriteNode?
     
@@ -46,10 +48,12 @@ class Cookie: Printable {
         self.column = column
         self.row = row
         self.cookieType = cookieType
+        self.selected = false
+        self.dragging = false
     }
     
     var description: String {
-        return "type:\(cookieType) square:(\(column),\(row))"
+        return "type:\(cookieType) square:(\(column),\(row)) selected:\(selected)"
     }
 }
 
